@@ -25,23 +25,25 @@ class BlogpostsController < ApplicationController
   # POST /blogposts
   # POST /blogposts.json
   def create
+  unless blogpost_params.empty?
     @blogpost = Blogpost.new(blogpost_params)
 
-    respond_to do |format|
-      if @blogpost.save
+     respond_to do |format|
+       if @blogpost.save
         format.html { redirect_to @blogpost, notice: 'Blogpost was successfully created.' }
         format.json { render :show, status: :created, location: @blogpost }
-      else
+       else
         format.html { render :new }
         format.json { render json: @blogpost.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+       end
+     end
+   end
+ end
 
   # PATCH/PUT /blogposts/1
   # PATCH/PUT /blogposts/1.json
   def update
-    respond_to do |format|
+    respond_to do |format|	
       if @blogpost.update(blogpost_params)
         format.html { redirect_to @blogpost, notice: 'Blogpost was successfully updated.' }
         format.json { render :show, status: :ok, location: @blogpost }
