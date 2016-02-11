@@ -49,7 +49,9 @@ sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/" "$PG_CONF"
 
 # Edit pg_hba.conf to add password authentication
 #
-sed -i "local all all md5" "$PG_HBA"
+
+sed -i "s/local    all             all             all                     peer/local    all             all             all                     md5/" "$PG_HBA"
+
 ############################################
 
 echo "host    all             all             all                     md5" >> "$PG_HBA"
