@@ -15,6 +15,7 @@ Vagrant.configure(2) do |config|
   #config.vm.box = "base"
 config.vm.box = "ubuntu/trusty64"
 config.vm.hostname="ohai"
+config.vm.provision :shell, :path => "vagrant-setup.sh"
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
