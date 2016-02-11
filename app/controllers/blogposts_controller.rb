@@ -25,7 +25,7 @@ class BlogpostsController < ApplicationController
   # POST /blogposts
   # POST /blogposts.json
   def create
-  unless blogpost_params.empty?
+  if blogpost_params.empty?
     @blogpost = Blogpost.new(blogpost_params)
 
      respond_to do |format|
